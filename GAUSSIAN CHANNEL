@@ -1,0 +1,25 @@
+import math
+
+print("To calculate following:")
+print("Enter 1 for Gaussian Channel Capacity")
+print("Enter 2 for Bandwidth")
+print("Enter 3 for SNR")
+a = int(input("Enter number : "))
+
+if a in (1, 2):
+    B = float(input("Enter bandwidth: ")) if a == 1 else None
+    C = float(input("Enter Capacity: ")) if a == 2 else None
+    S = float(input("Enter SNR: "))
+    v = (B if a == 1 else C/math.log2(1+S)) if a == 1 else C/math.log2(1+S)
+    if a == 1:
+        print("CAPACITY =", B*math.log2(1+S), "bps")
+    else:
+        print("Bandwidth =", v, "Hz")
+    print("Ashwin L 124A2003")
+elif a == 3:
+    C, B = float(input("Enter Capacity: ")), float(input("Enter Bandwidth: "))
+    print("SNR =", 2**(C/B)-1)
+    print("Ashwin L 124A2003")
+else:
+    print("Entered a wrong number")
+    print("Ashwin L 124A2003")
