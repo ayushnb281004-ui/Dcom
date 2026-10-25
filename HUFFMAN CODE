@@ -1,0 +1,24 @@
+import numpy as np, math
+
+x = int(input("Enter the number of random variables: "))
+print("\nEnter the probabilities in descending order:")
+p = [float(input("Enter the probability: ")) for _ in range(x)]
+h, c = -sum(v*math.log2(v) for v in p), ['']*x
+
+for i in range(x-1):
+    if i == 0: c[0], c[1] = '1', '0'
+    else:
+        for n in range(i+1): c[n] = '1'+c[n]
+        c[i+1] = '0'
+c.reverse()
+
+L = sum(p[i]*len(c[i]) for i in range(x))
+N = round(h/L, 4)
+
+print("\nThe Huffman Code for", x, "non-crossing probabilities are:")
+print(c)
+print("\nSource Entropy, H(S), is", round(h,4), "bits/symbol")
+print("\nAverage Code Length, L, is", round(L,4), "bits/symbol")
+print("\nCode rate is", N)
+print("\nCode efficiency is", N*100, "%")
+print("\nCode redundancy is", round(100-N*100,4), "%")
