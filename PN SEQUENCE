@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+
+l = [1,1,1,1]
+m = []
+
+for i in range(15):
+    m.append(l[-1])
+    l = [l[3]^l[0]] + l[:3]
+
+print("Generated m-sequence:", m)
+
+plt.step(range(15),m,where='mid')
+plt.title("4-bit m-sequence (Seed=1111, Taps=4,1)")
+plt.xlabel("Bit Number")
+plt.ylabel("Output")
+plt.yticks([0,1])
+plt.grid()
+plt.show()
