@@ -1,0 +1,12 @@
+import math
+
+p = [float(input(f"Px{i+1}: ")) for i in range(4)]
+r = float(input("rs: "))
+I = [round(math.log2(1/x),3) for x in p]
+H = round(sum(x*y for x,y in zip(p,I)),3)
+
+print("Probabilities:", *p, sep='\t')
+print("Self information:", *I, sep='\t')
+print("Entropy:", H, "bits per symbol")
+print("Average information rate:", H*r, "symbols per second")
+print("Ayush Bhadane 124A2004")
