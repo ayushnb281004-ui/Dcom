@@ -1,0 +1,18 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+d = list(map(int, input("Enter bits: ")))
+v = int(input("Enter voltage: "))
+
+plt.subplot(2,1,1)
+plt.step(range(len(d)+1), [v if b else -v for b in d]+[v if d[-1] else -v], where='post')
+plt.title("NRZ Polar")
+plt.grid()
+
+plt.subplot(2,1,2)
+plt.step(np.arange(0,len(d),.5), sum(([v if b else -v,0] for b in d),[]), where='post')
+plt.title("RZ Polar")
+plt.grid()
+
+plt.tight_layout()
+plt.show()
