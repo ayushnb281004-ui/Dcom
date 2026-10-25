@@ -1,0 +1,13 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+bits = [0,1,1,1,1,0,1,0]
+t = np.arange(0,0.01,1/5000)
+y = np.concatenate([b*np.sin(2*np.pi*200*t) for b in bits])
+
+plt.plot(np.arange(len(y))/5000,y)
+plt.title("BASK Modulated Signal for 01111010 Ayush Bhadane 124A2004")
+plt.xlabel("Time (s)")
+plt.ylabel("Amplitude")
+plt.grid()
+plt.show()
