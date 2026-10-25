@@ -1,0 +1,28 @@
+Import numpy as np
+import matplotlib.pyplot as plt
+
+n = int(input("Enter roll number: "))
+bits = list(map(int, format(n % 256, '08b')))
+print("Roll number:", n)
+print("8-bit Binary data:", bits)
+
+s = 100
+t = np.arange(len(bits)*s)/s
+d = np.repeat(bits, s)
+y = np.sin(2*np.pi*np.repeat([3 if b else 1 for b in bits], s)*t)
+
+plt.figure(figsize=(12,6))
+for i, (v, c, title) in enumerate([
+    (d, 'r', 'Input Binary Digital Signal'),
+    (y, 'b', 'BFSK Waveform - Amplitude vs Time Ayush B 124A2004')
+]):
+    plt.subplot(2,1,i+1)
+    plt.plot(t,v,c,linewidth=2)
+    plt.title(title)
+    plt.xlabel("Time(s)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    if i == 0: plt.ylim(-0.5,1.5)
+
+plt.tight_layout()
+plt.show()
