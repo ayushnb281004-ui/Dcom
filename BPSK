@@ -1,0 +1,14 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+fs, fc, Tb = 5000, 200, 0.01
+bits = [1, 1, 0, 0 ,1]
+t = np.arange(0, Tb, 1/fs)
+y = np.concatenate([np.sin(2*np.pi*fc*t + (0 if b else np.pi)) for b in bits])
+
+plt.plot(np.arange(len(y))/fs, y)
+plt.title("BPSK Signal with 0 and π Phase Ayush B (124A2004)")
+plt.xlabel("Time (s)")
+plt.ylabel("Amplitude")
+plt.grid()
+plt.show()
